@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "Keyboard",
+    "price": 25000,
+    "stock": 10,
+    "category": "accessories"
+  },
+  {
+    "id": 2,
+    "name": "Mouse",
+    "price": 15000,
+    "stock": 20,
+    "category": "accessories"
+  },
+  {
+    "id": 3,
+    "name": "Monitor",
+    "price": 180000,
+    "stock": 5,
+    "category": "hardware"
+  }
+]
