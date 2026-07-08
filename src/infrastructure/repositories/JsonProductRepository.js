@@ -24,7 +24,7 @@ class JsonProductRepository extends ProductRepository {
 
   async findById(id) {
     const products = await this.readProducts();
-    const product = products.find((item) => item.id === id);
+    const product = products.find((item) => item.id === parseInt(id));
 
     return product ? new Product(product) : null;
   }
@@ -56,11 +56,9 @@ class JsonProductRepository extends ProductRepository {
     }
 
     const updatedProduct = new Product({
-      id: Number(id),
-      name: productData.name,
-      price: productData.price,
-      stock: productData.stock,
-      category: productData.category
+      ...products[index],
+      ...productData,
+      id: products[index].id
     });
 
     products[index] = updatedProduct;
@@ -77,7 +75,9 @@ class JsonProductRepository extends ProductRepository {
       return null;
     }
 
-    await this.writeProducts(products);
+    const filteredProducts = products.filter((item) => item.id !== Number(id));
+
+    await this.writeProducts(filteredProducts);
 
     return new Product(product);
   }

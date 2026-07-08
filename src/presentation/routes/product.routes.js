@@ -18,8 +18,8 @@ const productController = new ProductController({
   updateProductUseCase: new UpdateProductUseCase(productRepository)
 });
 
-router.get('/', productController.getProductById);
-router.get('/:id', productController.getAllProducts);
+router.get('/', productController.getAllProducts);
+router.get('/:id', productController.getProductById);
 router.post('/', productController.createProduct);
 router.patch('/:id', productController.updateProduct);
 router.delete('/:id', productController.deleteProduct);

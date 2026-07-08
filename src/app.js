@@ -4,8 +4,11 @@ const errorMiddleware = require('./presentation/middlewares/error.middleware');
 
 const app = express();
 
-app.use(errorMiddleware);
+app.use(express.json());
 
 app.use('/products', productRoutes);
+
+
+app.use(errorMiddleware);
 
 module.exports = app;

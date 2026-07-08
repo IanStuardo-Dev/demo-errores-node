@@ -37,7 +37,7 @@ class ProductController {
 
       res.status(200).json(product);
     } catch (error) {
-      res.status(500).json({ message: error.message });
+      res.status(404).json({ message: error.message });
     }
   }
 
@@ -51,19 +51,19 @@ class ProductController {
 
       const product = await this.createProductUseCase.execute(req.body);
 
-      res.status(200).json(product);
+      res.status(201).json(product);
     } catch (error) {
-      next(error);
+      res.status(400).json({ message: error.message });
     }
   }
 
   async updateProduct(req, res, next) {
     try {
-      const product = this.updateProductUseCase.execute(req.params.id, req.body);
+      const product = await this.updateProductUseCase.execute(req.params.id, req.body);
 
       res.status(200).json(product);
     } catch (error) {
-      res.status(500).json({ message: error.message });
+      res.status(404).json({ message: error.message });
     }
   }
 
@@ -73,7 +73,7 @@ class ProductController {
 
       res.status(200).json(product);
     } catch (error) {
-      res.status(500).json({ message: error.message });
+      res.status(404).json({ message: error.message });
     }
   }
 }
