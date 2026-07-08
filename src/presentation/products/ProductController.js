@@ -1,4 +1,4 @@
-const { validateProduct } = require('../validators/product.validator');
+const { validateProduct } = require('./product.validator');
 
 class ProductController {
   constructor({

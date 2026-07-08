@@ -33,6 +33,14 @@ npm test
 
 Los tests están escritos con Jest y Supertest. Representan el comportamiento esperado de la API.
 
+También hay un set focalizado en trampas de JavaScript moderno:
+
+```bash
+npm test -- --runInBand tests/javascript-patterns.test.js
+```
+
+Ese set revisa detalles como retorno implícito en arrow functions, callbacks de `filter`, comparadores de `sort`, acumuladores con `reduce`, `this` léxico y `Promise.all` con `map` async.
+
 ## Endpoints esperados
 
 ```txt
@@ -41,6 +49,16 @@ GET    /products/:id
 POST   /products
 PATCH  /products/:id
 DELETE /products/:id
+```
+
+CRUD adicional de inspecciones de calidad asociadas a productos:
+
+```txt
+GET    /products/:productId/inspections
+GET    /products/:productId/inspections/:inspectionId
+POST   /products/:productId/inspections
+PATCH  /products/:productId/inspections/:inspectionId
+DELETE /products/:productId/inspections/:inspectionId
 ```
 
 ## Modelo Product
@@ -55,14 +73,28 @@ DELETE /products/:id
 }
 ```
 
+## Modelo ProductInspection
+
+```json
+{
+  "id": 1,
+  "productId": 1,
+  "inspector": "Ana Quality",
+  "score": 92,
+  "status": "approved",
+  "notes": "Packaging and switches are consistent"
+}
+```
+
 ## Estructura del proyecto
 
-El proyecto está organizado en capas simples:
+El proyecto está organizado por capas y, dentro de cada capa, por feature:
 
-- `domain`: entidades y contratos.
-- `application`: casos de uso.
-- `infrastructure`: persistencia en JSON.
-- `presentation`: rutas, controllers, validadores y middleware HTTP.
+- `domain/products` y `domain/product-inspections`: entidades y contratos.
+- `application/products` y `application/product-inspections`: casos de uso.
+- `infrastructure/products` y `infrastructure/product-inspections`: persistencia en JSON.
+- `presentation/products` y `presentation/product-inspections`: rutas, controllers y validadores HTTP.
+- `presentation/middlewares`: middleware HTTP compartido.
 - `shared`: errores reutilizables.
 
 ## Qué se espera

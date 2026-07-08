@@ -3,7 +3,7 @@ const fs = require('fs/promises');
 const path = require('path');
 const app = require('../src/app');
 
-const productsPath = path.join(__dirname, '../src/infrastructure/data/products.json');
+const productsPath = path.join(__dirname, '../src/infrastructure/products/products.json');
 
 const initialProducts = [
   {

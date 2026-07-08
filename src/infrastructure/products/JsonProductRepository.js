@@ -1,9 +1,9 @@
 const fs = require('fs/promises');
 const path = require('path');
-const ProductRepository = require('../../domain/repositories/ProductRepository');
-const Product = require('../../domain/entities/Product');
+const ProductRepository = require('../../domain/products/ProductRepository');
+const Product = require('../../domain/products/Product');
 
-const productsPath = path.join(__dirname, '../data/products.json');
+const productsPath = path.join(__dirname, 'products.json');
 
 class JsonProductRepository extends ProductRepository {
   async readProducts() {

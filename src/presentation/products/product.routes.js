@@ -1,11 +1,12 @@
 const express = require('express');
-const ProductController = require('../controllers/ProductController');
-const JsonProductRepository = require('../../infrastructure/repositories/JsonProductRepository');
-const CreateProductUseCase = require('../../application/use-cases/CreateProductUseCase');
-const DeleteProductUseCase = require('../../application/use-cases/DeleteProductUseCase');
-const GetAllProductsUseCase = require('../../application/use-cases/GetAllProductsUseCase');
-const GetProductByIdUseCase = require('../../application/use-cases/GetProductByIdUseCase');
-const UpdateProductUseCase = require('../../application/use-cases/UpdateProductUseCase');
+const ProductController = require('./ProductController');
+const productInspectionRoutes = require('../product-inspections/product-inspection.routes');
+const JsonProductRepository = require('../../infrastructure/products/JsonProductRepository');
+const CreateProductUseCase = require('../../application/products/CreateProductUseCase');
+const DeleteProductUseCase = require('../../application/products/DeleteProductUseCase');
+const GetAllProductsUseCase = require('../../application/products/GetAllProductsUseCase');
+const GetProductByIdUseCase = require('../../application/products/GetProductByIdUseCase');
+const UpdateProductUseCase = require('../../application/products/UpdateProductUseCase');
 
 const router = express.Router();
 
@@ -19,6 +20,7 @@ const productController = new ProductController({
 });
 
 router.get('/', productController.getAllProducts);
+router.use('/:productId/inspections', productInspectionRoutes);
 router.get('/:id', productController.getProductById);
 router.post('/', productController.createProduct);
 router.patch('/:id', productController.updateProduct);

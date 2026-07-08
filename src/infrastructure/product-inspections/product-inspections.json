@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "productId": 1,
+    "inspector": "Ana Quality",
+    "score": 92,
+    "status": "approved",
+    "notes": "Packaging and switches are consistent"
+  },
+  {
+    "id": 2,
+    "productId": 1,
+    "inspector": "Luis QA",
+    "score": 64,
+    "status": "rework",
+    "notes": "One stabilizer needs adjustment"
+  },
+  {
+    "id": 3,
+    "productId": 2,
+    "inspector": "Mia Control",
+    "score": 88,
+    "status": "approved",
+    "notes": "Sensor calibration looks good"
+  }
+]
